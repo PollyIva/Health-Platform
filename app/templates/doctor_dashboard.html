@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Панель врача</title>
+</head>
+<body>
+    <h1>Панель врача</h1>
+    <h2>Список пациентов</h2>
+    <ul>
+        {% for patient in patients %}
+        <li>
+            {{ patient.name }} 
+            <!-- Кнопка для назначения лечащего врача -->
+            {% if not patient.doctor_id %}
+            <form method="post" action="/doctor/assign/" style="display: inline;">
+                <input type="hidden" name="patient_id" value="{{ patient.id }}">
+                <button type="submit">Стать лечащим врачом</button>
+            </form>
+            {% endif %}
+            <!-- Кнопка для открытия карточки пациента -->
+            <form method="get" action="/patient/{{ patient.id }}/card" style="display: inline;">
+                <button type="submit">Открыть карточку</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

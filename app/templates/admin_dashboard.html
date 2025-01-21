@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Администраторская панель</title>
+</head>
+<body>
+    <h1>Администраторская панель</h1>
+    <h2>Список врачей</h2>
+    <table border="1">
+        <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Верифицирован</th>
+            <th>Действия</th>
+        </tr>
+        {% for doctor in doctors %}
+        <tr>
+            <td>{{ doctor.name }}</td>
+            <td>{{ doctor.email }}</td>
+            <td>{{ "Да" if doctor.verified else "Нет" }}</td>
+            <td>
+                {% if not doctor.verified %}
+                <form method="post" action="/admin/verify/">
+                    <input type="hidden" name="email" value="{{ doctor.email }}">
+                    <button type="submit">Верифицировать</button>
+                </form>
+                {% endif %}
+                <!-- Форма для удаления врача -->
+                <form method="post" action="/admin/delete/">
+                    <input type="hidden" name="email" value="{{ doctor.email }}">
+                    <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить этого врача?');">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

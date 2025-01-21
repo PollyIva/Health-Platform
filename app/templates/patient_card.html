@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Карточка пациента</title>
+</head>
+<body>
+    <h1>Карточка пациента</h1>
+    <p>Имя: {{ patient.name }}</p>
+    <p>Контактные данные: {{ patient.contact_info }}</p>
+
+    <!-- Раздел для жалоб -->
+    <h2>Жалобы</h2>
+    {% if complaints %}
+        <ul>
+            {% for complaint in complaints %}
+                <li>{{ complaint.content }} ({{ complaint.timestamp.strftime('%Y-%m-%d %H:%M') }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Жалобы отсутствуют.</p>
+    {% endif %}
+
+    <!-- Раздел для записей врача -->
+    <h2>История болезни</h2>
+    {% if history_records %}
+        <ul>
+            {% for record in history_records %}
+                <li>{{ record.date.strftime('%Y-%m-%d %H:%M') }}: {{ record.message }} (врач: {{ record.doctor.name }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>История болезни отсутствует.</p>
+    {% endif %}
+
+    <!-- Форма для добавления записи -->
+    <form method="post" action="/doctor/add_record">
+        <textarea name="record" placeholder="Добавить запись"></textarea><br>
+        <input type="hidden" name="patient_id" value="{{ patient.id }}">
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>

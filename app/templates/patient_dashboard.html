@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Панель пациента</title>
+</head>
+<body>
+    <h1>Панель пациента</h1>
+    <h2>Лечащий врач: {{ doctor_name }}</h2>
+
+    <!-- Раздел Истории болезней -->
+    <h2>История болезней</h2>
+    <ul>
+        {% for record in history %}
+        <li>
+            <!-- <strong>Врач:</strong> {{ record.doctor.name if record.doctor else "Неизвестный врач" }} <br> -->
+            <strong>Комментарий врача:</strong> {{ record.message }} <br>
+            <strong>Дата:</strong> {{ record.date.strftime("%Y-%m-%d %H:%M") }}
+        </li>
+        {% else %}
+        <li>История болезней пуста.</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Раздел Жалоб -->
+    <h2>Жалобы</h2>
+    <ul>
+        {% for complaint in complaints %}
+        <li>
+            <strong>Жалоба:</strong> {{ complaint.content }} <br>
+            <strong>Дата:</strong> {{ complaint.timestamp.strftime("%Y-%m-%d %H:%M") }}
+        </li>
+        {% else %}
+        <li>Жалоб пока нет.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Форма для добавления новой жалобы -->
+    <h3>Добавить новую жалобу</h3>
+    <form method="post" action="/patient/{{ patient_id }}/history/">
+        <textarea name="complaint" placeholder="Введите вашу жалобу"></textarea><br>
+        <button type="submit">Добавить жалобу</button>
+    </form>
+
+</body>
+</html>
