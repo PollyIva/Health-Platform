@@ -9,10 +9,12 @@ from pydantic import BaseModel
 from fastapi.responses import RedirectResponse
 from sqlalchemy import DateTime
 from datetime import datetime
+from fastapi.staticfiles import StaticFiles
 
 # Инициализация приложения и шаблонов
 app = FastAPI()
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Настройка базы данных
 Base = declarative_base()

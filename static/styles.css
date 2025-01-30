@@ -1,0 +1,140 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Стили для таблиц */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+form {
+    margin: 10px 0;
+}
+
+/* Стили для форм */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    padding: 8px;
+    width: 100%;
+    margin: 5px 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+form label {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Стили для ссылок */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Стиль для уведомлений */
+.alert {
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+/* Стиль для панелей */
+.panel {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+/* Стиль для разделов с историями и жалобами */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+ul li strong {
+    color: #333;
+}
+
+/* Стили для формы жалоб */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Стиль для кнопки удаления */
+button[type="submit"] {
+    background-color: #f44336;
+}
+
+button[type="submit"]:hover {
+    background-color: #d32f2f;
+}
