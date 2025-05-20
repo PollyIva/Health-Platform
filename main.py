@@ -18,7 +18,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Настройка базы данных
 Base = declarative_base()
-engine = create_engine("sqlite:///app.db")
+engine = create_engine("sqlite:///app.db", connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Контекст для хеширования паролей
